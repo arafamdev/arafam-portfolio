@@ -3,11 +3,15 @@ import { createPortal } from 'react-dom';
 
 import { X } from 'lucide-react';
 
+import { useLanguage } from '../../../shared/i18n/useLanguage';
+
 import HeaderSocialLinks from './HeaderSocialLinks';
 
 import { navigationLinks } from './headerData';
 
 function NavigationDrawer({ isOpen, onClose, menuButtonRef }) {
+  const { t } = useLanguage();
+
   const drawerRef = useRef(null);
   const closeButtonRef = useRef(null);
 
@@ -119,7 +123,7 @@ function NavigationDrawer({ isOpen, onClose, menuButtonRef }) {
       {/* Close the drawer when clicking outside */}
       <button
         type="button"
-        aria-label="Close navigation"
+        aria-label={t.navigation.closeMenu}
         onClick={onClose}
         tabIndex={-1}
         className="fixed inset-0 cursor-default"
@@ -130,20 +134,20 @@ function NavigationDrawer({ isOpen, onClose, menuButtonRef }) {
         ref={drawerRef}
         role="dialog"
         aria-modal="true"
-        aria-label="Navigation"
+        aria-label={t.navigation.mainNavigation}
         className="bg-background border-foreground/10 fixed inset-y-0 right-0 flex h-dvh w-[min(85vw,380px)] flex-col border-l px-7 py-8 shadow-2xl"
       >
         {/* Panel header */}
         <div className="flex items-center justify-between">
           <span className="text-muted text-[10px] font-semibold tracking-[0.2em] uppercase">
-            Navigation
+            {t.navigation.mainNavigation}
           </span>
 
           <button
             ref={closeButtonRef}
             type="button"
             onClick={onClose}
-            aria-label="Close navigation"
+            aria-label={t.navigation.closeMenu}
             className="focus-visible:outline-foreground rounded-lg p-2 focus-visible:outline-2 focus-visible:outline-offset-4"
           >
             <X aria-hidden="true" size={22} />
@@ -152,18 +156,18 @@ function NavigationDrawer({ isOpen, onClose, menuButtonRef }) {
 
         {/* Navigation links */}
         <nav
-          aria-label="Mobile navigation"
+          aria-label={t.navigation.mobileNavigation}
           className="flex min-h-0 flex-1 flex-col justify-center overflow-y-auto py-8"
         >
           <ul className="space-y-5">
-            {navigationLinks.map(({ label, href }) => (
+            {navigationLinks.map(({ translationKey, href }) => (
               <li key={href}>
                 <a
                   href={href}
                   onClick={onClose}
                   className="hover:text-muted focus-visible:outline-foreground block rounded-sm text-2xl font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-4"
                 >
-                  {label}
+                  {t.navigation[translationKey]}
                 </a>
               </li>
             ))}
@@ -173,7 +177,7 @@ function NavigationDrawer({ isOpen, onClose, menuButtonRef }) {
         {/* Professional contact links */}
         <div className="border-foreground/10 shrink-0 border-t pt-5">
           <p className="text-muted mb-4 text-[10px] font-semibold tracking-[0.2em] uppercase">
-            Connect
+            {t.navigation.connect}
           </p>
 
           <HeaderSocialLinks

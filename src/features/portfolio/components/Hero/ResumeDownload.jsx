@@ -2,14 +2,18 @@ import { useEffect, useRef, useState } from 'react';
 
 import { Download } from 'lucide-react';
 
+import { useLanguage } from '../../../../shared/i18n/useLanguage';
+
 const resumeOptions = [
   {
+    code: 'pt',
     label: 'Português (PT)',
     flag: '🇵🇹',
     href: '/documents/arafam-silla-cv-pt.pdf',
     filename: 'Arafam_Mussa_Silla_CV_PT.pdf',
   },
   {
+    code: 'en',
     label: 'English (EN)',
     flag: '🇬🇧',
     href: '/documents/arafam-silla-cv-en.pdf',
@@ -18,6 +22,8 @@ const resumeOptions = [
 ];
 
 function ResumeDownload() {
+  const { t } = useLanguage();
+
   const [isOpen, setIsOpen] = useState(false);
 
   const menuRef = useRef(null);
@@ -70,7 +76,7 @@ function ResumeDownload() {
         className="border-foreground/20 hover:bg-foreground/10 focus-visible:outline-foreground inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border px-4 text-sm font-semibold whitespace-nowrap transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 xl:px-5"
       >
         <Download aria-hidden="true" size={18} />
-        Download CV
+        {t.hero.downloadCv}
       </button>
 
       {isOpen && (
@@ -79,15 +85,16 @@ function ResumeDownload() {
           className="bg-background border-foreground/20 absolute top-full left-0 z-20 mt-3 min-w-52 rounded-xl border p-2 shadow-xl lg:top-auto lg:bottom-full lg:mt-0 lg:mb-3"
         >
           <p className="text-muted px-3 py-2 text-xs font-medium">
-            Choose a language
+            {t.hero.chooseCvLanguage}
           </p>
 
           <ul>
-            {resumeOptions.map(({ label, flag, href, filename }) => (
+            {resumeOptions.map(({ code, label, flag, href, filename }) => (
               <li key={href}>
                 <a
                   href={href}
                   download={filename}
+                  lang={code}
                   onClick={closeMenu}
                   className="hover:bg-foreground/10 focus-visible:outline-foreground flex items-center gap-3 rounded-lg px-3 py-3 text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
                 >
