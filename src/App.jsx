@@ -28,7 +28,7 @@ function App() {
         Arafam.dev
       </p>
 
-      <h1 className="text-4xl font-semibold tracking-tight sm:text-6xl">
+      <h1 className="font-display text-5xl font-semibold tracking-tight sm:text-7xl">
         Frontend Developer
       </h1>
 
