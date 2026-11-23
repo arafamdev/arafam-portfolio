@@ -139,6 +139,23 @@ const en = {
     },
   },
 
+  contact: {
+    eyebrow: '04 / Contact',
+    availability: 'Open to opportunities',
+    title: {
+      first: "Let's build",
+      second: 'something meaningful.',
+    },
+    description:
+      "I'm open to frontend opportunities, collaborations and interesting projects. Have something in mind? Let's talk.",
+    emailLabel: 'Get in touch',
+  },
+
+  footer: {
+    rights: 'All rights reserved.',
+    backToTop: 'Back to top',
+  },
+
   theme: {
     lightMode: 'Light mode',
     darkMode: 'Dark mode',
