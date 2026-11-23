@@ -139,6 +139,23 @@ const pt = {
     },
   },
 
+  contact: {
+    eyebrow: '04 / Contacto',
+    availability: 'Disponível para oportunidades',
+    title: {
+      first: 'Vamos criar',
+      second: 'algo com significado.',
+    },
+    description:
+      'Estou disponível para oportunidades em frontend, colaborações e projetos interessantes. Tens alguma ideia em mente? Vamos conversar.',
+    emailLabel: 'Envia-me uma mensagem',
+  },
+
+  footer: {
+    rights: 'Todos os direitos reservados.',
+    backToTop: 'Voltar ao início',
+  },
+
   theme: {
     lightMode: 'Modo claro',
     darkMode: 'Modo escuro',
