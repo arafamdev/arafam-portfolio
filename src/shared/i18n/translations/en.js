@@ -27,6 +27,37 @@ const en = {
     portraitAlt: 'Black and white portrait of Arafam',
   },
 
+  about: {
+    eyebrow: '02 / About',
+    caption: 'A little about me',
+    title: {
+      first: 'Design-minded.',
+      second: 'Development-driven.',
+    },
+    introduction:
+      "I'm a frontend developer who enjoys turning ideas into intuitive, accessible and thoughtfully built digital experiences.",
+    description:
+      'With a background in Information Systems and Technologies, I focus on building responsive interfaces with React and modern web technologies. I value clean code, attention to detail and continuous learning.',
+    details: {
+      frontend: {
+        title: 'Frontend development',
+        description: 'React · JavaScript · Tailwind CSS',
+      },
+      approach: {
+        title: 'My approach',
+        description: 'Accessibility · Responsive design · Clean code',
+      },
+      workflow: {
+        title: 'Tools & workflow',
+        description: 'Git · GitHub · Vite · REST APIs',
+      },
+      location: {
+        title: 'Based in Portugal',
+        description: 'Open to frontend opportunities',
+      },
+    },
+  },
+
   theme: {
     lightMode: 'Light mode',
     darkMode: 'Dark mode',
