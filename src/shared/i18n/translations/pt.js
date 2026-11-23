@@ -27,6 +27,37 @@ const pt = {
     portraitAlt: 'Retrato a preto e branco de Arafam',
   },
 
+  about: {
+    eyebrow: '02 / Sobre mim',
+    caption: 'Um pouco sobre mim',
+    title: {
+      first: 'Design com intenção.',
+      second: 'Código com propósito.',
+    },
+    introduction:
+      'Sou um programador frontend que gosta de transformar ideias em experiências digitais intuitivas, acessíveis e cuidadosamente desenvolvidas.',
+    description:
+      'Com formação em Sistemas e Tecnologias de Informação, dedico-me à criação de interfaces responsivas com React e tecnologias web modernas. Valorizo o código organizado, a atenção ao detalhe e a aprendizagem contínua.',
+    details: {
+      frontend: {
+        title: 'Desenvolvimento frontend',
+        description: 'React · JavaScript · Tailwind CSS',
+      },
+      approach: {
+        title: 'A minha abordagem',
+        description: 'Acessibilidade · Design responsivo · Código limpo',
+      },
+      workflow: {
+        title: 'Ferramentas e processo',
+        description: 'Git · GitHub · Vite · APIs REST',
+      },
+      location: {
+        title: 'Em Portugal',
+        description: 'Disponível para oportunidades em frontend',
+      },
+    },
+  },
+
   theme: {
     lightMode: 'Modo claro',
     darkMode: 'Modo escuro',

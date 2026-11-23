@@ -1,5 +1,6 @@
 import Header from './components/layout/Header/Header';
 
+import About from './features/portfolio/components/About/About';
 import Hero from './features/portfolio/components/Hero/Hero';
 
 import { useTheme } from './shared/hooks/useTheme';
@@ -13,6 +14,7 @@ function App() {
 
       <main>
         <Hero />
+        <About />
       </main>
     </>
   );
