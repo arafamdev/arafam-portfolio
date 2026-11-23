@@ -58,6 +58,87 @@ const en = {
     },
   },
 
+  projects: {
+    eyebrow: '03 / Selected Work',
+    caption: '2026 — Present',
+    title: {
+      first: 'Selected',
+      second: 'projects.',
+    },
+    introduction:
+      'A selection of applications built with modern frontend technologies, focusing on usability, responsive interfaces and practical problem-solving.',
+    responsive: 'Responsive design',
+    deviceLabel: 'Preview device',
+    previewThemeLabel: 'Screenshot theme',
+    technologiesLabel: 'Technologies used',
+    devices: {
+      desktop: 'Desktop',
+      tablet: 'Tablet',
+      mobile: 'Mobile',
+    },
+    themes: {
+      dark: 'Dark',
+      light: 'Light',
+    },
+    liveDemo: 'Live Demo',
+    viewCaseStudy: 'View case study',
+    caseStudyLabel: 'Case Study',
+    closeCaseStudy: 'Close case study',
+    caseStudySections: {
+      challenge: 'The challenge',
+      solution: 'The solution',
+      architecture: 'Architecture & technologies',
+      features: 'Key features',
+    },
+    items: {
+      djumbai: {
+        category: 'Movie & TV discovery',
+        description:
+          'A cinematic platform for discovering movies and TV shows, exploring genres, watching trailers and managing personal favorites and watchlists.',
+        caseStudy: {
+          challenge:
+            'Build an intuitive experience for discovering movies and TV shows while providing a personal way to organize content.',
+          solution:
+            'A responsive cinematic interface with search suggestions, genre discovery, trailers, favorites and a personal watchlist.',
+          architecture:
+            'React 19, Vite, Tailwind CSS, React Router and Context API. TMDB requests use a Vercel serverless proxy to keep the API token outside the client bundle.',
+          features:
+            'Movie and TV discovery, live search, genre filtering, detailed pages, trailers, favorites, watchlist and local persistence.',
+        },
+      },
+      donext: {
+        category: 'Task management',
+        description:
+          'A responsive task manager with search, filters, progress tracking, accessible interactions and reliable local persistence.',
+        caseStudy: {
+          challenge:
+            'Create a practical task manager that remains accessible, responsive and reliable when handling locally stored data.',
+          solution:
+            'A focused interface for creating, editing, completing and filtering tasks, with progress tracking and persistent preferences.',
+          architecture:
+            'React 19, Vite and Vanilla CSS. React state manages the interface, localStorage preserves tasks, and the Web Locks API helps coordinate writes across tabs.',
+          features:
+            'Task creation and editing, search, filters, bulk actions, progress statistics, light and dark themes, keyboard interactions and local persistence.',
+        },
+      },
+      atmos: {
+        category: 'Weather application',
+        description:
+          'A modern weather experience with city search, device location, current conditions and detailed forecasts powered by real weather data.',
+        caseStudy: {
+          challenge:
+            'Present weather information from external APIs in a clear, responsive and accessible interface.',
+          solution:
+            'A weather dashboard with city search, device location, current conditions and forecasts in a clean visual experience.',
+          architecture:
+            'React 19, Vite, Tailwind CSS and TanStack Query. Open-Meteo provides weather data, while BigDataCloud supports location-related functionality.',
+          features:
+            'City autocomplete, device geolocation, current weather, hourly and four-day forecasts, precipitation probability, sunrise and sunset, and persistent themes.',
+        },
+      },
+    },
+  },
+
   theme: {
     lightMode: 'Light mode',
     darkMode: 'Dark mode',

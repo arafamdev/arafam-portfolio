@@ -2,6 +2,7 @@ import Header from './components/layout/Header/Header';
 
 import About from './features/portfolio/components/About/About';
 import Hero from './features/portfolio/components/Hero/Hero';
+import Projects from './features/portfolio/components/Projects/Projects';
 
 import { useTheme } from './shared/hooks/useTheme';
 
@@ -15,6 +16,7 @@ function App() {
       <main>
         <Hero />
         <About />
+        <Projects theme={theme} />
       </main>
     </>
   );
