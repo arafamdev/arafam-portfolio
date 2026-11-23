@@ -1,8 +1,12 @@
 import { ArrowDownRight, ArrowUpRight } from 'lucide-react';
 
+import { useLanguage } from '../../../../shared/i18n/useLanguage';
+
 import ResumeDownload from './ResumeDownload';
 
 function Hero() {
+  const { t } = useLanguage();
+
   return (
     <section
       id="home"
@@ -12,22 +16,20 @@ function Hero() {
       {/* Introduction */}
       <div className="flex min-w-0 flex-col items-start">
         <p className="text-muted mb-6 text-xs font-semibold tracking-[0.2em] uppercase">
-          Frontend Developer · React
+          {t.hero.role}
         </p>
 
         <h1
           id="hero-title"
           className="font-display text-6xl leading-[0.95] font-medium tracking-tight sm:text-7xl xl:text-8xl"
         >
-          Building
-          <span className="block italic">digital</span>
-          experiences.
+          {t.hero.title.first}
+          <span className="block italic">{t.hero.title.second}</span>
+          {t.hero.title.third}
         </h1>
 
         <p className="text-muted mt-8 max-w-lg text-sm leading-7 sm:text-base">
-          I'm Arafam, a frontend developer focused on creating intuitive,
-          accessible and carefully crafted web experiences with React and modern
-          technologies.
+          {t.hero.description}
         </p>
 
         {/* Primary actions */}
@@ -36,7 +38,7 @@ function Hero() {
             href="#projects"
             className="bg-foreground text-background focus-visible:outline-foreground inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-4 text-sm font-semibold whitespace-nowrap transition-opacity hover:opacity-85 focus-visible:outline-2 focus-visible:outline-offset-4 xl:px-5"
           >
-            Explore projects
+            {t.hero.exploreProjects}
             <ArrowUpRight aria-hidden="true" size={18} />
           </a>
 
@@ -44,7 +46,7 @@ function Hero() {
             href="#about"
             className="border-foreground/20 hover:bg-foreground/10 focus-visible:outline-foreground inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border px-4 text-sm font-semibold whitespace-nowrap transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 xl:px-5"
           >
-            About me
+            {t.hero.aboutMe}
             <ArrowDownRight aria-hidden="true" size={18} />
           </a>
 
@@ -57,7 +59,7 @@ function Hero() {
         <div className="border-foreground/10 relative aspect-[4/5] overflow-hidden rounded-2xl border">
           <img
             src="/images/arafam-hero-portrait.jpeg"
-            alt="Black and white portrait of Arafam"
+            alt={t.hero.portraitAlt}
             width={723}
             height={1086}
             fetchPriority="high"
@@ -67,7 +69,7 @@ function Hero() {
         </div>
 
         <p className="text-muted mt-4 text-right text-xs tracking-wide">
-          Based in Portugal · Working worldwide
+          {t.hero.location}
         </p>
       </div>
     </section>

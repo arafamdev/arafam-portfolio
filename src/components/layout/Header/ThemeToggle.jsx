@@ -1,13 +1,17 @@
 import { Moon, Sun } from 'lucide-react';
 
+import { useLanguage } from '../../../shared/i18n/useLanguage';
+
 function ThemeToggle({ theme, onToggleTheme }) {
+  const { t } = useLanguage();
+
   const isDarkTheme = theme === 'dark';
 
   const themeButtonLabel = isDarkTheme
-    ? 'Switch to light mode'
-    : 'Switch to dark mode';
+    ? t.theme.switchToLight
+    : t.theme.switchToDark;
 
-  const themeButtonText = isDarkTheme ? 'Light mode' : 'Dark mode';
+  const themeButtonText = isDarkTheme ? t.theme.lightMode : t.theme.darkMode;
 
   return (
     <button

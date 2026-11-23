@@ -2,12 +2,17 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { Menu } from 'lucide-react';
 
+import { useLanguage } from '../../../shared/i18n/useLanguage';
+
 import HeaderNavigation from './HeaderNavigation';
 import HeaderSocialLinks from './HeaderSocialLinks';
+import LanguageSwitcher from './LanguageSwitcher';
 import NavigationDrawer from './NavigationDrawer';
 import ThemeToggle from './ThemeToggle';
 
 function Header({ theme, onToggleTheme }) {
+  const { t } = useLanguage();
+
   const [isNavigationOpen, setIsNavigationOpen] = useState(false);
 
   const menuButtonRef = useRef(null);
@@ -58,6 +63,8 @@ function Header({ theme, onToggleTheme }) {
           <div className="flex items-center gap-2">
             <HeaderSocialLinks className="hidden items-center gap-2 lg:flex" />
 
+            <LanguageSwitcher />
+
             <ThemeToggle theme={theme} onToggleTheme={onToggleTheme} />
 
             {/* Mobile and tablet navigation */}
@@ -65,7 +72,7 @@ function Header({ theme, onToggleTheme }) {
               ref={menuButtonRef}
               type="button"
               onClick={openNavigation}
-              aria-label="Open navigation"
+              aria-label={t.navigation.openMenu}
               aria-haspopup="dialog"
               aria-expanded={isNavigationOpen}
               className="border-foreground/20 hover:bg-foreground/10 focus-visible:outline-foreground flex h-10 w-10 items-center justify-center rounded-xl border transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 lg:hidden"
