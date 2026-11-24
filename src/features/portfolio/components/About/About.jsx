@@ -1,4 +1,5 @@
 import { useLanguage } from '../../../../shared/i18n/useLanguage';
+import SpokenLanguages from './SpokenLanguages';
 
 function About() {
   const { t } = useLanguage();
@@ -83,6 +84,8 @@ function About() {
             </div>
           ))}
         </div>
+
+        <SpokenLanguages />
       </div>
     </section>
   );
