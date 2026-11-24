@@ -39,8 +39,9 @@ function ProjectCard({ project, portfolioTheme }) {
   const projectText = t.projects.items[project.id];
   const desktopImages = project.images.desktop;
 
-  const hasMultipleThemes =
-    desktopImages !== null && typeof desktopImages === 'object';
+  const hasMultipleThemes = Boolean(
+    desktopImages?.dark && desktopImages?.light,
+  );
 
   const canSelectTheme = selectedDevice === 'desktop' && hasMultipleThemes;
 
@@ -49,10 +50,9 @@ function ProjectCard({ project, portfolioTheme }) {
 
   const activeTheme = selectedTheme ?? defaultPreviewTheme;
 
-  const selectedImage =
-    selectedDevice === 'desktop' && hasMultipleThemes
-      ? desktopImages[activeTheme]
-      : project.images[selectedDevice];
+  const selectedImage = canSelectTheme
+    ? desktopImages[activeTheme]
+    : project.images[selectedDevice];
 
   const imageDescription = [
     project.name,
@@ -145,8 +145,10 @@ function ProjectCard({ project, portfolioTheme }) {
       {/* Responsive screenshot preview */}
       <div className="flex justify-center">
         <img
-          key={selectedImage}
-          src={selectedImage}
+          key={selectedImage.src}
+          src={selectedImage.src}
+          width={selectedImage.width}
+          height={selectedImage.height}
           alt={imageDescription}
           loading="lazy"
           decoding="async"
