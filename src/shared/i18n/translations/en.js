@@ -167,6 +167,16 @@ const en = {
     label: 'Language',
     select: 'Select language',
   },
+
+  accessibility: {
+    skipToContent: 'Skip to main content',
+    socialLinks: {
+      github: 'GitHub profile (opens in a new tab)',
+      linkedin: 'LinkedIn profile (opens in a new tab)',
+      email: 'Send an email',
+    },
+    opensInNewTab: 'opens in a new tab',
+  },
 };
 
 export default en;

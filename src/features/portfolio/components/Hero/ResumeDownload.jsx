@@ -44,7 +44,7 @@ function ResumeDownload() {
       if (event.key === 'Escape') {
         event.preventDefault();
         setIsOpen(false);
-        triggerRef.current?.focus();
+        triggerRef.current?.focus({ preventScroll: true });
       }
     }
 
@@ -61,12 +61,20 @@ function ResumeDownload() {
     setIsOpen((previousIsOpen) => !previousIsOpen);
   }
 
-  function closeMenu() {
+  function handleResumeDownload() {
     setIsOpen(false);
+    triggerRef.current?.focus({ preventScroll: true });
+  }
+
+  // Close the options when focus leaves the component.
+  function handleBlur(event) {
+    if (!event.currentTarget.contains(event.relatedTarget)) {
+      setIsOpen(false);
+    }
   }
 
   return (
-    <div ref={menuRef} className="relative">
+    <div ref={menuRef} onBlur={handleBlur} className="relative">
       <button
         ref={triggerRef}
         type="button"
@@ -79,35 +87,34 @@ function ResumeDownload() {
         {t.hero.downloadCv}
       </button>
 
-      {isOpen && (
-        <div
-          id="resume-download-options"
-          className="bg-background border-foreground/20 absolute top-full left-0 z-20 mt-3 min-w-52 rounded-xl border p-2 shadow-xl lg:top-auto lg:bottom-full lg:mt-0 lg:mb-3"
-        >
-          <p className="text-muted px-3 py-2 text-xs font-medium">
-            {t.hero.chooseCvLanguage}
-          </p>
+      <div
+        id="resume-download-options"
+        hidden={!isOpen}
+        className="bg-background border-foreground/20 absolute top-full left-0 z-20 mt-3 min-w-52 rounded-xl border p-2 shadow-xl lg:top-auto lg:bottom-full lg:mt-0 lg:mb-3"
+      >
+        <p className="text-muted px-3 py-2 text-xs font-medium">
+          {t.hero.chooseCvLanguage}
+        </p>
 
-          <ul>
-            {resumeOptions.map(({ code, label, flag, href, filename }) => (
-              <li key={href}>
-                <a
-                  href={href}
-                  download={filename}
-                  lang={code}
-                  onClick={closeMenu}
-                  className="hover:bg-foreground/10 focus-visible:outline-foreground flex items-center gap-3 rounded-lg px-3 py-3 text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
-                >
-                  <span aria-hidden="true" className="text-xl leading-none">
-                    {flag}
-                  </span>
-                  <span>{label}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+        <ul>
+          {resumeOptions.map(({ code, label, flag, href, filename }) => (
+            <li key={href}>
+              <a
+                href={href}
+                download={filename}
+                lang={code}
+                onClick={handleResumeDownload}
+                className="hover:bg-foreground/10 focus-visible:outline-foreground flex items-center gap-3 rounded-lg px-3 py-3 text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
+              >
+                <span aria-hidden="true" className="text-xl leading-none">
+                  {flag}
+                </span>
+                <span>{label}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+
 import { ArrowUpRight, X } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa6';
 
@@ -12,16 +13,24 @@ function ProjectCaseStudy({ project, isOpen, onClose }) {
   const { t } = useLanguage();
 
   const dialogRef = useRef(null);
-  const closeButtonRef = useRef(null);
+  const dialogTitleRef = useRef(null);
 
   const projectText = t.projects.items[project.id];
   const caseStudy = projectText.caseStudy;
+
+  const dialogTitleId = `case-study-${project.id}`;
+
+  const liveDemoLabel = `${t.projects.liveDemo} — ${project.name} (${t.accessibility.opensInNewTab})`;
+  const githubLabel = `GitHub — ${project.name} (${t.accessibility.opensInNewTab})`;
+  const closeCaseStudyLabel = `${t.projects.closeCaseStudy} — ${project.name}`;
 
   // Control the dialog and lock background scrolling.
   useEffect(() => {
     const dialog = dialogRef.current;
 
-    if (!dialog) return;
+    if (!dialog) {
+      return;
+    }
 
     if (!isOpen) {
       if (dialog.open) {
@@ -35,7 +44,6 @@ function ProjectCaseStudy({ project, isOpen, onClose }) {
     const previousBodyOverflow = document.body.style.overflow;
     const previousHtmlOverflow = document.documentElement.style.overflow;
 
-    // Prevent scrolling behind the dialog.
     document.body.style.overflow = 'hidden';
     document.documentElement.style.overflow = 'hidden';
 
@@ -43,11 +51,11 @@ function ProjectCaseStudy({ project, isOpen, onClose }) {
       dialog.showModal();
     }
 
-    // Move keyboard focus inside the dialog.
-    closeButtonRef.current?.focus();
+    // Start each case study at its heading.
+    dialog.scrollTop = 0;
+    dialogTitleRef.current?.focus({ preventScroll: true });
 
     return () => {
-      // Restore scrolling after the dialog closes.
       document.body.style.overflow = previousBodyOverflow;
       document.documentElement.style.overflow = previousHtmlOverflow;
     };
@@ -85,7 +93,7 @@ function ProjectCaseStudy({ project, isOpen, onClose }) {
       ref={dialogRef}
       onClick={handleBackdropClick}
       onClose={handleClose}
-      aria-labelledby={`case-study-${project.id}`}
+      aria-labelledby={dialogTitleId}
       className="text-foreground bg-background border-foreground/15 fixed inset-0 m-auto hidden max-h-[90dvh] w-[calc(100%-2rem)] max-w-2xl overflow-y-auto overscroll-contain rounded-2xl border p-0 shadow-2xl backdrop:bg-black/70 open:block"
     >
       <div className="p-6 sm:p-10">
@@ -97,18 +105,19 @@ function ProjectCaseStudy({ project, isOpen, onClose }) {
             </p>
 
             <h2
-              id={`case-study-${project.id}`}
-              className="font-display mt-4 text-4xl font-medium sm:text-5xl"
+              ref={dialogTitleRef}
+              id={dialogTitleId}
+              tabIndex={-1}
+              className="font-display mt-4 text-4xl font-medium focus:outline-2 focus:outline-offset-4 sm:text-5xl"
             >
               {project.name}
             </h2>
           </div>
 
           <button
-            ref={closeButtonRef}
             type="button"
             onClick={handleCloseButton}
-            aria-label={t.projects.closeCaseStudy}
+            aria-label={closeCaseStudyLabel}
             className="border-foreground/20 hover:bg-foreground/10 shrink-0 rounded-full border p-3 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
           >
             <X aria-hidden="true" size={20} />
@@ -159,6 +168,7 @@ function ProjectCaseStudy({ project, isOpen, onClose }) {
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={liveDemoLabel}
             className="inline-flex items-center gap-2 text-sm font-semibold underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4"
           >
             {t.projects.liveDemo}
@@ -169,6 +179,7 @@ function ProjectCaseStudy({ project, isOpen, onClose }) {
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={githubLabel}
             className="inline-flex items-center gap-2 text-sm font-semibold underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4"
           >
             <FaGithub aria-hidden="true" size={17} />

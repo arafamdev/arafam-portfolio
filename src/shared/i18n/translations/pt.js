@@ -167,6 +167,16 @@ const pt = {
     label: 'Idioma',
     select: 'Selecionar idioma',
   },
+
+  accessibility: {
+    skipToContent: 'Saltar para o conteúdo principal',
+    socialLinks: {
+      github: 'Perfil do GitHub (abre num novo separador)',
+      linkedin: 'Perfil do LinkedIn (abre num novo separador)',
+      email: 'Enviar um email',
+    },
+    opensInNewTab: 'abre num novo separador',
+  },
 };
 
 export default pt;
