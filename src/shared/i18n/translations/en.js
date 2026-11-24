@@ -56,6 +56,24 @@ const en = {
         description: 'Open to frontend opportunities',
       },
     },
+    languages: {
+      eyebrow: 'Communication',
+      title: 'Spoken languages.',
+      description:
+        'Connecting across cultures and collaborating in international environments.',
+      names: {
+        portuguese: 'Portuguese',
+        creole: 'Guinea-Bissau Creole',
+        english: 'English',
+        russian: 'Russian',
+        spanish: 'Spanish',
+      },
+      levels: {
+        native: 'Native',
+        fluent: 'Fluent',
+        advanced: 'Advanced',
+      },
+    },
   },
 
   projects: {

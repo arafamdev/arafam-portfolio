@@ -56,6 +56,24 @@ const pt = {
         description: 'Disponível para oportunidades em frontend',
       },
     },
+    languages: {
+      eyebrow: 'Comunicação',
+      title: 'Idiomas.',
+      description:
+        'Comunicar entre culturas e colaborar em ambientes internacionais.',
+      names: {
+        portuguese: 'Português',
+        creole: 'Crioulo da Guiné-Bissau',
+        english: 'Inglês',
+        russian: 'Russo',
+        spanish: 'Espanhol',
+      },
+      levels: {
+        native: 'Nativo',
+        fluent: 'Fluente',
+        advanced: 'Avançado',
+      },
+    },
   },
 
   projects: {
