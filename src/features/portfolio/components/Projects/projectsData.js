@@ -18,9 +18,21 @@ export const projects = [
     liveUrl: 'https://djumbai-cine.vercel.app/',
     githubUrl: 'https://github.com/arafamdev/djumbai-cine',
     images: {
-      desktop: `${imageDirectory}/djumbai-desktop.png`,
-      tablet: `${imageDirectory}/djumbai-tablet.png`,
-      mobile: `${imageDirectory}/djumbai-mobile.png`,
+      desktop: {
+        src: `${imageDirectory}/djumbai-desktop.webp`,
+        width: 2084,
+        height: 1368,
+      },
+      tablet: {
+        src: `${imageDirectory}/djumbai-tablet.webp`,
+        width: 1668,
+        height: 1642,
+      },
+      mobile: {
+        src: `${imageDirectory}/djumbai-mobile.webp`,
+        width: 1406,
+        height: 1482,
+      },
     },
   },
   {
@@ -40,11 +52,27 @@ export const projects = [
     githubUrl: 'https://github.com/arafamdev/do-next',
     images: {
       desktop: {
-        dark: `${imageDirectory}/donext-dark.png`,
-        light: `${imageDirectory}/donext-light.png`,
+        dark: {
+          src: `${imageDirectory}/donext-dark.png`,
+          width: 1030,
+          height: 653,
+        },
+        light: {
+          src: `${imageDirectory}/donext-light.png`,
+          width: 1139,
+          height: 699,
+        },
       },
-      tablet: `${imageDirectory}/donext-tablet.png`,
-      mobile: `${imageDirectory}/donext-mobile.png`,
+      tablet: {
+        src: `${imageDirectory}/donext-tablet.png`,
+        width: 920,
+        height: 867,
+      },
+      mobile: {
+        src: `${imageDirectory}/donext-mobile.png`,
+        width: 483,
+        height: 720,
+      },
     },
   },
   {
@@ -65,11 +93,27 @@ export const projects = [
     githubUrl: 'https://github.com/arafamdev/atmos-weather-app',
     images: {
       desktop: {
-        dark: `${imageDirectory}/atmos-dark.png`,
-        light: `${imageDirectory}/atmos-light.png`,
+        dark: {
+          src: `${imageDirectory}/atmos-dark.png`,
+          width: 1035,
+          height: 695,
+        },
+        light: {
+          src: `${imageDirectory}/atmos-light.png`,
+          width: 1044,
+          height: 689,
+        },
       },
-      tablet: `${imageDirectory}/atmos-tablet.png`,
-      mobile: `${imageDirectory}/atmos-mobile.png`,
+      tablet: {
+        src: `${imageDirectory}/atmos-tablet.png`,
+        width: 775,
+        height: 782,
+      },
+      mobile: {
+        src: `${imageDirectory}/atmos-mobile.png`,
+        width: 589,
+        height: 746,
+      },
     },
   },
 ];
