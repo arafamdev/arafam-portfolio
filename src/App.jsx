@@ -7,15 +7,22 @@ import Hero from './features/portfolio/components/Hero/Hero';
 import Projects from './features/portfolio/components/Projects/Projects';
 
 import { useTheme } from './shared/hooks/useTheme';
+import { useLanguage } from './shared/i18n/useLanguage';
 
 function App() {
   const { theme, toggleTheme } = useTheme();
+  const { t } = useLanguage();
 
   return (
     <>
+      {/* Allow keyboard users to bypass the header navigation. */}
+      <a href="#main-content" className="skip-link">
+        {t.accessibility.skipToContent}
+      </a>
+
       <Header theme={theme} onToggleTheme={toggleTheme} />
 
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <Hero />
         <About />
         <Projects theme={theme} />

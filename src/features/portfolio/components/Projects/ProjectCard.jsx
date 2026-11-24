@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+
 import {
   ArrowUpRight,
   BookOpen,
@@ -61,17 +62,24 @@ function ProjectCard({ project, portfolioTheme }) {
     .filter(Boolean)
     .join(' — ');
 
+  const caseStudyLabel = `${t.projects.viewCaseStudy} — ${project.name}`;
+  const liveDemoLabel = `${t.projects.liveDemo} — ${project.name} (${t.accessibility.opensInNewTab})`;
+  const githubLabel = `GitHub — ${project.name} (${t.accessibility.opensInNewTab})`;
+
   function openCaseStudy() {
     setIsCaseStudyOpen(true);
   }
 
   function closeCaseStudy() {
     setIsCaseStudyOpen(false);
-    caseStudyButtonRef.current?.focus();
+    caseStudyButtonRef.current?.focus({ preventScroll: true });
   }
 
   return (
-    <article className="border-foreground/15 border-t pt-6 lg:pt-8">
+    <article
+      aria-labelledby={`project-title-${project.id}`}
+      className="border-foreground/15 border-t pt-6 lg:pt-8"
+    >
       {/* Project identification */}
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
         <p className="text-muted text-xs tracking-[0.2em] uppercase">
@@ -87,7 +95,7 @@ function ProjectCard({ project, portfolioTheme }) {
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <div
           role="group"
-          aria-label={t.projects.deviceLabel}
+          aria-label={`${t.projects.deviceLabel} — ${project.name}`}
           className="flex flex-wrap gap-2"
         >
           {devices.map(({ id, Icon }) => (
@@ -111,7 +119,7 @@ function ProjectCard({ project, portfolioTheme }) {
         {canSelectTheme && (
           <div
             role="group"
-            aria-label={t.projects.previewThemeLabel}
+            aria-label={`${t.projects.previewThemeLabel} — ${project.name}`}
             className="flex flex-wrap gap-2"
           >
             {themes.map(({ id, Icon }) => (
@@ -142,20 +150,17 @@ function ProjectCard({ project, portfolioTheme }) {
           alt={imageDescription}
           loading="lazy"
           decoding="async"
-          className={`border-foreground/10 h-auto max-h-[440px] max-w-full rounded-lg border object-contain ${
-            selectedDevice === 'mobile'
-              ? 'w-auto'
-              : selectedDevice === 'tablet'
-                ? 'w-auto'
-                : 'w-auto'
-          }`}
+          className="border-foreground/10 h-auto max-h-[440px] w-auto max-w-full rounded-lg border object-contain"
         />
       </div>
 
       {/* Project information */}
       <div className="mt-6 grid gap-5 lg:grid-cols-[1fr_1.1fr] lg:gap-10">
         <div className="min-w-0">
-          <h3 className="font-display text-3xl font-medium tracking-tight sm:text-4xl">
+          <h3
+            id={`project-title-${project.id}`}
+            className="font-display text-3xl font-medium tracking-tight sm:text-4xl"
+          >
             {project.name}
           </h3>
 
@@ -167,7 +172,7 @@ function ProjectCard({ project, portfolioTheme }) {
         <div className="flex min-w-0 flex-col justify-between gap-5">
           {/* Technology badges */}
           <ul
-            aria-label={t.projects.technologiesLabel}
+            aria-label={`${t.projects.technologiesLabel} — ${project.name}`}
             className="flex flex-wrap gap-2"
           >
             {project.technologies.map((technology) => (
@@ -184,6 +189,7 @@ function ProjectCard({ project, portfolioTheme }) {
               type="button"
               onClick={openCaseStudy}
               aria-haspopup="dialog"
+              aria-label={caseStudyLabel}
               className="inline-flex items-center gap-2 text-sm font-semibold underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4"
             >
               <BookOpen aria-hidden="true" size={17} />
@@ -194,6 +200,7 @@ function ProjectCard({ project, portfolioTheme }) {
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={liveDemoLabel}
               className="inline-flex items-center gap-2 text-sm font-semibold underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4"
             >
               {t.projects.liveDemo}
@@ -204,6 +211,7 @@ function ProjectCard({ project, portfolioTheme }) {
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={githubLabel}
               className="inline-flex items-center gap-2 text-sm font-semibold underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4"
             >
               <FaGithub aria-hidden="true" size={17} />

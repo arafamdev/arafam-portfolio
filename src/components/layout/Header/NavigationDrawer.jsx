@@ -9,7 +9,14 @@ import HeaderSocialLinks from './HeaderSocialLinks';
 
 import { navigationLinks } from './headerData';
 
-function NavigationDrawer({ isOpen, onClose, menuButtonRef }) {
+function NavigationDrawer({
+  isOpen,
+  onClose,
+  onNavigationSelect,
+  menuButtonRef,
+  brandLinkRef,
+  navigationTargetRef,
+}) {
   const { t } = useLanguage();
 
   const drawerRef = useRef(null);
@@ -24,6 +31,7 @@ function NavigationDrawer({ isOpen, onClose, menuButtonRef }) {
     const wasAppRootInert = appRootElement?.inert ?? false;
 
     const menuButtonElement = menuButtonRef.current;
+    const brandLinkElement = brandLinkRef.current;
     const previouslyFocusedElement = document.activeElement;
     const previousBodyOverflow = document.body.style.overflow;
 
@@ -100,13 +108,35 @@ function NavigationDrawer({ isOpen, onClose, menuButtonRef }) {
         appRootElement.inert = wasAppRootInert;
       }
 
-      if (menuButtonElement?.isConnected) {
-        menuButtonElement.focus();
+      const navigationTarget = navigationTargetRef.current;
+      navigationTargetRef.current = null;
+
+      // Move focus to the selected section after navigation.
+      if (navigationTarget) {
+        const targetSection = document.getElementById(
+          navigationTarget.slice(1),
+        );
+
+        if (targetSection) {
+          targetSection.setAttribute('tabindex', '-1');
+          targetSection.focus({ preventScroll: true });
+          targetSection.scrollIntoView({ block: 'start' });
+          return;
+        }
+      }
+
+      // Use the brand link when the mobile menu button is hidden.
+      const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
+
+      if (isDesktop && brandLinkElement?.isConnected) {
+        brandLinkElement.focus({ preventScroll: true });
+      } else if (menuButtonElement?.isConnected) {
+        menuButtonElement.focus({ preventScroll: true });
       } else if (previouslyFocusedElement?.isConnected) {
-        previouslyFocusedElement.focus();
+        previouslyFocusedElement.focus({ preventScroll: true });
       }
     };
-  }, [isOpen, onClose, menuButtonRef]);
+  }, [isOpen, onClose, menuButtonRef, brandLinkRef, navigationTargetRef]);
 
   if (!isOpen) {
     return null;
@@ -114,19 +144,11 @@ function NavigationDrawer({ isOpen, onClose, menuButtonRef }) {
 
   return createPortal(
     <div className="fixed inset-0 z-[60] lg:hidden">
-      {/* Background overlay */}
+      {/* Close the drawer when clicking outside. */}
       <div
         aria-hidden="true"
-        className="fixed inset-0 bg-black/65 backdrop-blur-sm"
-      />
-
-      {/* Close the drawer when clicking outside */}
-      <button
-        type="button"
-        aria-label={t.navigation.closeMenu}
         onClick={onClose}
-        tabIndex={-1}
-        className="fixed inset-0 cursor-default"
+        className="fixed inset-0 bg-black/65 backdrop-blur-sm"
       />
 
       {/* Navigation panel */}
@@ -164,7 +186,7 @@ function NavigationDrawer({ isOpen, onClose, menuButtonRef }) {
               <li key={href}>
                 <a
                   href={href}
-                  onClick={onClose}
+                  onClick={() => onNavigationSelect(href)}
                   className="hover:text-muted focus-visible:outline-foreground block rounded-sm text-2xl font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-4"
                 >
                   {t.navigation[translationKey]}

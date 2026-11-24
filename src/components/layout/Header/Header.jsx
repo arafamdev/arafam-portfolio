@@ -16,14 +16,22 @@ function Header({ theme, onToggleTheme }) {
   const [isNavigationOpen, setIsNavigationOpen] = useState(false);
 
   const menuButtonRef = useRef(null);
+  const brandLinkRef = useRef(null);
+  const navigationTargetRef = useRef(null);
 
   function openNavigation() {
+    navigationTargetRef.current = null;
     setIsNavigationOpen(true);
   }
 
   const closeNavigation = useCallback(() => {
     setIsNavigationOpen(false);
   }, []);
+
+  function handleNavigationSelect(href) {
+    navigationTargetRef.current = href;
+    closeNavigation();
+  }
 
   // Close the drawer when the viewport changes to desktop.
   useEffect(() => {
@@ -48,6 +56,7 @@ function Header({ theme, onToggleTheme }) {
         <div className="mx-auto flex min-h-20 w-full max-w-7xl items-center justify-between gap-4 px-6 sm:px-10 lg:px-16">
           {/* Brand */}
           <a
+            ref={brandLinkRef}
             href="#home"
             className="focus-visible:outline-foreground shrink-0 rounded-sm text-sm font-bold tracking-[0.18em] uppercase focus-visible:outline-2 focus-visible:outline-offset-4"
           >
@@ -87,7 +96,10 @@ function Header({ theme, onToggleTheme }) {
       <NavigationDrawer
         isOpen={isNavigationOpen}
         onClose={closeNavigation}
+        onNavigationSelect={handleNavigationSelect}
         menuButtonRef={menuButtonRef}
+        brandLinkRef={brandLinkRef}
+        navigationTargetRef={navigationTargetRef}
       />
     </>
   );
