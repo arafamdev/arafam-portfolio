@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="18" fill="#121212" />
+
+  <path
+    d="M12 73V70L20 68L44 15H47L70 68L77 70V73H52V70L61 68L54 51H32L25 68L35 70V73ZM34 47H52L43 25Z"
+    fill="#F4F0E9"
+    fill-rule="evenodd"
+  />
+
+  <circle cx="83" cy="69" r="5" fill="#F4F0E9" />
+</svg>
