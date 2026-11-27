@@ -2,9 +2,75 @@ const imageDirectory = '/images/projects';
 
 export const projects = [
   {
-    id: 'djumbai',
+    id: 'saturnino',
     number: '01',
     order: 1,
+    featured: true,
+    name: 'Saturnino',
+    technologies: [
+      'React',
+      'JavaScript',
+      'Vite',
+      'Tailwind CSS',
+      'React Router',
+      'React Hook Form',
+      'IndexedDB',
+      'Dexie',
+      'dnd-kit',
+      'PWA',
+      'i18next',
+      'Vitest',
+    ],
+    liveUrl: 'https://saturnino-app.vercel.app/',
+    githubUrl: 'https://github.com/arafamdev/saturnino',
+    images: {
+      desktop: {
+        src: `${imageDirectory}/saturnino-dark.webp`,
+        width: 1440,
+        height: 900,
+      },
+      tablet: {
+        src: `${imageDirectory}/saturnino-tablet.webp`,
+        width: 768,
+        height: 1024,
+      },
+      mobile: {
+        src: `${imageDirectory}/saturnino-mobile.webp`,
+        width: 390,
+        height: 844,
+      },
+    },
+    gallery: [
+      {
+        id: 'landingDark',
+        src: `${imageDirectory}/saturnino-landing.webp`,
+        width: 1425,
+        height: 636,
+      },
+      {
+        id: 'landingLight',
+        src: `${imageDirectory}/saturnino-landing-light.webp`,
+        width: 1205,
+        height: 749,
+      },
+      {
+        id: 'dashboard',
+        src: `${imageDirectory}/saturnino-dashboard.webp`,
+        width: 1425,
+        height: 891,
+      },
+      {
+        id: 'userGuide',
+        src: `${imageDirectory}/saturnino-guide.webp`,
+        width: 1440,
+        height: 1000,
+      },
+    ],
+  },
+  {
+    id: 'djumbai',
+    number: '02',
+    order: 2,
     featured: true,
     name: 'Djumbai Cine',
     technologies: [
@@ -32,46 +98,6 @@ export const projects = [
         src: `${imageDirectory}/djumbai-mobile.webp`,
         width: 1406,
         height: 1482,
-      },
-    },
-  },
-  {
-    id: 'donext',
-    number: '02',
-    order: 2,
-    featured: true,
-    name: 'DoNext',
-    technologies: [
-      'React',
-      'JavaScript',
-      'Vite',
-      'Vanilla CSS',
-      'localStorage',
-    ],
-    liveUrl: 'https://do-next-app.vercel.app/',
-    githubUrl: 'https://github.com/arafamdev/do-next',
-    images: {
-      desktop: {
-        dark: {
-          src: `${imageDirectory}/donext-dark.png`,
-          width: 1030,
-          height: 653,
-        },
-        light: {
-          src: `${imageDirectory}/donext-light.png`,
-          width: 1139,
-          height: 699,
-        },
-      },
-      tablet: {
-        src: `${imageDirectory}/donext-tablet.png`,
-        width: 920,
-        height: 867,
-      },
-      mobile: {
-        src: `${imageDirectory}/donext-mobile.png`,
-        width: 483,
-        height: 720,
       },
     },
   },
@@ -116,11 +142,50 @@ export const projects = [
       },
     },
   },
+  {
+    id: 'donext',
+    number: '04',
+    order: 4,
+    featured: true,
+    name: 'DoNext',
+    technologies: [
+      'React',
+      'JavaScript',
+      'Vite',
+      'Vanilla CSS',
+      'localStorage',
+    ],
+    liveUrl: 'https://do-next-app.vercel.app/',
+    githubUrl: 'https://github.com/arafamdev/do-next',
+    images: {
+      desktop: {
+        dark: {
+          src: `${imageDirectory}/donext-dark.png`,
+          width: 1030,
+          height: 653,
+        },
+        light: {
+          src: `${imageDirectory}/donext-light.png`,
+          width: 1139,
+          height: 699,
+        },
+      },
+      tablet: {
+        src: `${imageDirectory}/donext-tablet.png`,
+        width: 920,
+        height: 867,
+      },
+      mobile: {
+        src: `${imageDirectory}/donext-mobile.png`,
+        width: 483,
+        height: 720,
+      },
+    },
+  },
 ];
 
 export const featuredProjects = projects
   .filter((project) => project.featured)
   .sort(
     (firstProject, secondProject) => firstProject.order - secondProject.order,
-  )
-  .slice(0, 3);
+  );

@@ -107,8 +107,42 @@ const pt = {
       solution: 'A solução',
       architecture: 'Arquitetura e tecnologias',
       features: 'Funcionalidades principais',
+      gallery: 'Galeria da aplicação',
     },
     items: {
+      saturnino: {
+        category: 'Gestão de projetos e tarefas',
+        description:
+          'Uma aplicação de gestão de projetos e tarefas com arquitetura local-first, quadros Kanban interativos, organização avançada de tarefas, suporte offline e uma interface responsiva e acessível.',
+        caseStudy: {
+          challenge:
+            'Desenvolver uma aplicação completa de gestão de projetos que combine organização intuitiva de tarefas, persistência fiável de dados locais e interações acessíveis, sem exigir uma conta ou uma ligação constante à Internet.',
+          solution:
+            'Um espaço de trabalho focado na produtividade, com quadros Kanban interativos, listas de tarefas, gestão de projetos, indicadores de desempenho e preferências personalizadas. A abordagem local-first permite organizar o trabalho diretamente no dispositivo do utilizador.',
+          architecture:
+            'React 19, Vite, Tailwind CSS 4 e React Router, com uma arquitetura organizada por funcionalidades. Dexie e IndexedDB asseguram a persistência local, React Hook Form gere os formulários, dnd-kit permite interações de arrastar e largar e i18next gere a internacionalização. Workbox suporta a utilização offline, enquanto Vitest, React Testing Library e GitHub Actions apoiam a qualidade do código.',
+          features:
+            'Gestão de projetos e tarefas, quadros Kanban interativos, visualização em lista, interações de arrastar e largar e por teclado, pesquisa e filtros, prioridades, prazos, indicadores de desempenho, cópias de segurança e restauro em JSON, exportação CSV, PWA instalável, suporte offline, interface bilingue e temas claro e escuro persistentes.',
+        },
+        gallery: {
+          landingDark: {
+            title: 'Página inicial — Tema escuro',
+            alt: 'Página inicial do Saturnino com identidade visual orbital em tema escuro',
+          },
+          landingLight: {
+            title: 'Página inicial — Tema claro',
+            alt: 'Página inicial do Saturnino em tema claro',
+          },
+          dashboard: {
+            title: 'Painel de controlo',
+            alt: 'Painel do Saturnino com indicadores de projetos e tarefas',
+          },
+          userGuide: {
+            title: 'Guia de utilização',
+            alt: 'Guia de utilização do Saturnino com navegação por capítulos e instruções iniciais',
+          },
+        },
+      },
       djumbai: {
         category: 'Descoberta de filmes e séries',
         description:
