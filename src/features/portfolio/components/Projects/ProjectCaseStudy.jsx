@@ -5,6 +5,7 @@ import { FaGithub } from 'react-icons/fa6';
 
 import { useLanguage } from '../../../../shared/i18n/useLanguage';
 
+import ProjectGallery from './ProjectGallery';
 import TechnologyBadge from './TechnologyBadge';
 
 const caseStudySections = ['challenge', 'solution', 'architecture', 'features'];
@@ -161,6 +162,15 @@ function ProjectCaseStudy({ project, isOpen, onClose }) {
             </section>
           ))}
         </div>
+
+        {/* Optional project gallery */}
+        {isOpen && (
+          <ProjectGallery
+            images={project.gallery}
+            translations={projectText.gallery}
+            title={t.projects.caseStudySections.gallery}
+          />
+        )}
 
         {/* Project links */}
         <div className="border-foreground/15 mt-10 flex flex-wrap gap-6 border-t pt-6">

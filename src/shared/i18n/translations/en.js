@@ -107,8 +107,42 @@ const en = {
       solution: 'The solution',
       architecture: 'Architecture & technologies',
       features: 'Key features',
+      gallery: 'Application gallery',
     },
     items: {
+      saturnino: {
+        category: 'Project & task management',
+        description:
+          'A local-first project and task management application with interactive Kanban boards, advanced task organization, offline support and a responsive, accessible workspace.',
+        caseStudy: {
+          challenge:
+            'Build a comprehensive project management application that combines intuitive task organization, reliable local data persistence and accessible interactions without requiring an account or a constant internet connection.',
+          solution:
+            'A focused workspace with interactive Kanban boards, task lists, project management, dashboard analytics and personalized settings. The local-first approach allows users to organize their work directly on their devices.',
+          architecture:
+            'React 19, Vite, Tailwind CSS 4 and React Router, organized around feature-based architecture. Dexie and IndexedDB provide local data persistence, React Hook Form handles forms, dnd-kit enables drag-and-drop interactions, and i18next manages internationalization. Workbox supports offline functionality, while Vitest, React Testing Library and GitHub Actions support code quality.',
+          features:
+            'Project and task management, interactive Kanban boards, list views, drag-and-drop and keyboard interactions, search and filters, priorities, deadlines, dashboard analytics, JSON backup and restore, CSV export, installable PWA, offline support, bilingual interfaces and persistent light and dark themes.',
+        },
+        gallery: {
+          landingDark: {
+            title: 'Landing page — Dark mode',
+            alt: 'Saturnino landing page with orbital visual identity in dark mode',
+          },
+          landingLight: {
+            title: 'Landing page — Light mode',
+            alt: 'Saturnino landing page in light mode',
+          },
+          dashboard: {
+            title: 'Dashboard',
+            alt: 'Saturnino dashboard displaying project and task analytics',
+          },
+          userGuide: {
+            title: 'User guide',
+            alt: 'Saturnino user guide with chapter navigation and quick-start instructions',
+          },
+        },
+      },
       djumbai: {
         category: 'Movie & TV discovery',
         description:

@@ -7,7 +7,17 @@ import {
   SiVite,
 } from 'react-icons/si';
 
-import { CloudSun, Code2, Database, RefreshCw } from 'lucide-react';
+import {
+  CloudSun,
+  Code2,
+  Database,
+  Download,
+  FlaskConical,
+  Grip,
+  Languages,
+  ListChecks,
+  RefreshCw,
+} from 'lucide-react';
 
 const technologyIcons = {
   React: SiReact,
@@ -17,7 +27,14 @@ const technologyIcons = {
   'Vanilla CSS': SiCss,
   'React Router': SiReactrouter,
   'TanStack Query': RefreshCw,
+  'React Hook Form': ListChecks,
   localStorage: Database,
+  IndexedDB: Database,
+  Dexie: Database,
+  'dnd-kit': Grip,
+  PWA: Download,
+  i18next: Languages,
+  Vitest: FlaskConical,
   'TMDB API': Code2,
   'Open-Meteo': CloudSun,
 };
